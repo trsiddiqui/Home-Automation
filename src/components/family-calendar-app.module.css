@@ -1,0 +1,2642 @@
+.page {
+  min-height: 100vh;
+  padding: 18px 18px 104px;
+}
+
+.shell {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 16px;
+  min-height: calc(100vh - 36px);
+}
+
+.shellHeaderHidden {
+  grid-template-rows: 1fr;
+}
+
+.shellMobile {
+  gap: 12px;
+}
+
+.shellWeb {
+  gap: 16px;
+}
+
+.shellKiosk {
+  gap: 18px;
+}
+
+.headerBar,
+.board,
+.modalShell,
+.eventSurface,
+.monthCard,
+.dayFlowPanel,
+.dayClockShell,
+.dayListColumn,
+.weekHeaderCell {
+  border: 1px solid var(--border);
+  background: var(--panel);
+  backdrop-filter: blur(24px);
+  box-shadow: var(--shadow);
+}
+
+.headerBar {
+  padding: 16px 18px;
+  border-radius: 28px;
+}
+
+.headerMain,
+.headerIdentity,
+.headerControls,
+.themeButton,
+.themeButtonCopy,
+.themeButtonIconWrap,
+.headerTitleRow,
+.nowChip,
+.nowChipTop,
+.nowChipBottom,
+.inlineMeta,
+.boardToolbarStart,
+.boardToolbarEnd,
+.boardRangeNav,
+.segmentedControl,
+.navButtons,
+.boardToolbar,
+.modalHeader,
+.editorHeader,
+.accountIdentity,
+.accountCalendarRow,
+.eventSurfaceMeta,
+.eventLocation,
+.modeBadge,
+.todayFloat,
+.accountFab,
+.composeFab,
+.iconButton,
+.secondaryButton,
+.primaryButton,
+.weekHeaderSticky,
+.weekTimelineBody,
+.dayListHeading,
+.monthCardTop {
+  display: flex;
+  align-items: center;
+}
+
+.headerMain,
+.boardToolbar,
+.modalHeader,
+.editorHeader,
+.monthCardTop {
+  justify-content: space-between;
+}
+
+.headerMain {
+  gap: 18px;
+}
+
+.headerIdentity {
+  gap: 12px;
+  min-width: 0;
+}
+
+.headerTitleBlock {
+  min-width: 0;
+}
+
+.toolbarLabel {
+  color: var(--text-soft);
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.headerTitleRow {
+  gap: 14px;
+  min-width: 0;
+  white-space: nowrap;
+}
+
+.headerTitle {
+  font-size: clamp(1.75rem, 3vw, 2.8rem);
+  line-height: 0.95;
+}
+
+.headerMetaDivider {
+  width: 1px;
+  height: 26px;
+  background: var(--border-strong);
+}
+
+.headerHint,
+.boardHint,
+.modalBodyCopy,
+.monthCardMeta,
+.eventSurfaceBody span,
+.fieldHelp,
+.emptyStateText {
+  color: var(--text-soft);
+}
+
+.headerHint {
+  font-size: 0.98rem;
+}
+
+.headerControls,
+.inlineMeta,
+.segmentedControl,
+.navButtons {
+  gap: 10px;
+}
+
+.headerControls {
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.nowChip {
+  display: grid;
+  gap: 4px;
+  padding: 10px 14px;
+  border-radius: 18px;
+  border: 1px solid var(--button-border);
+  background: linear-gradient(180deg, var(--button-top) 0%, var(--button-bottom) 100%);
+  color: var(--button-text);
+  text-align: left;
+  box-shadow:
+    0 8px 0 var(--button-ledge),
+    0 18px 28px var(--button-shadow),
+    inset 0 1px 0 var(--button-highlight);
+}
+
+.nowChipTop,
+.nowChipBottom {
+  gap: 8px;
+}
+
+.nowChipTop {
+  color: var(--text-soft);
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.nowChipBottom strong {
+  font-size: 1rem;
+}
+
+.nowChipIcon {
+  color: var(--accent);
+}
+
+.nowChipPressed {
+  transform: translateY(6px);
+  box-shadow:
+    0 2px 0 var(--button-ledge),
+    0 10px 18px var(--button-shadow),
+    inset 0 1px 0 var(--button-highlight);
+}
+
+.nowChip:not(.nowChipPressed):hover {
+  transform: translateY(-1px);
+}
+
+.nowChipFloating {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  z-index: 40;
+  backdrop-filter: blur(24px);
+}
+
+.headerDetails {
+  display: grid;
+  gap: 10px;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
+
+.headerDetails p {
+  line-height: 1.5;
+}
+
+.metaPill,
+.occupancyBadge,
+.eventCalendarLabel,
+.eventEditableHint {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: var(--control);
+  font-size: 0.88rem;
+}
+
+.modeBadge {
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: var(--control);
+  white-space: nowrap;
+}
+
+.iconButton,
+.controlButton,
+.navLabelButton,
+.segmentedButton,
+.secondaryButton,
+.primaryButton,
+.moreEventsButton,
+.clockSlot,
+.weekSlotCell,
+.todayFloat,
+.accountFab,
+.composeFab,
+.nowChip,
+.themeButton,
+.eventSurface {
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    background 180ms ease,
+    border-color 180ms ease,
+    opacity 180ms ease;
+}
+
+.iconButton,
+.controlButton {
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 16px;
+  background: var(--control);
+  color: var(--text);
+}
+
+.controlButton {
+  min-width: 44px;
+  width: auto;
+  padding: 0 16px;
+  font-weight: 600;
+}
+
+.navLabelButton {
+  justify-content: center;
+  gap: 8px;
+  min-width: 124px;
+  min-height: 44px;
+  padding: 0 14px;
+  border-radius: 16px;
+  background: var(--control);
+  color: var(--text);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.segmentedControl {
+  padding: 6px;
+  border-radius: 999px;
+  background: var(--control-muted);
+}
+
+.segmentedButton {
+  padding: 11px 16px;
+  border-radius: 999px;
+  color: var(--text-soft);
+  text-transform: capitalize;
+}
+
+.segmentedButtonActive {
+  background: var(--control-strong);
+  color: var(--text);
+  box-shadow: var(--shadow-soft);
+}
+
+.stage {
+  min-height: 0;
+}
+
+.board {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 16px;
+  min-height: 0;
+  height: 100%;
+  padding: 18px;
+  border-radius: 34px;
+}
+
+.boardBusy {
+  opacity: 0.92;
+}
+
+.boardToolbar {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: 16px;
+}
+
+.boardToolbarStart {
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-self: start;
+}
+
+.boardToolbarEnd {
+  justify-content: flex-end;
+  justify-self: end;
+}
+
+.boardRangeNav {
+  gap: 14px;
+  justify-content: center;
+}
+
+.boardTitleWrap {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+  justify-items: center;
+  text-align: center;
+}
+
+.boardTitle {
+  font-size: clamp(1.1rem, 1.65vw, 1.5rem);
+  line-height: 1.1;
+}
+
+.boardBody {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.loadingState,
+.contentEmpty,
+.emptyDayCard {
+  border-radius: 24px;
+  background: var(--panel-muted);
+}
+
+.themeButton {
+  gap: 12px;
+  min-width: 176px;
+  min-height: 56px;
+  padding: 10px 16px 12px;
+  border-radius: 20px;
+  border: 1px solid var(--button-border);
+  background: linear-gradient(180deg, var(--button-top) 0%, var(--button-bottom) 100%);
+  color: var(--button-text);
+  text-align: left;
+  box-shadow:
+    0 8px 0 var(--button-ledge),
+    0 18px 28px var(--button-shadow),
+    inset 0 1px 0 var(--button-highlight);
+}
+
+.themeButtonPressed {
+  transform: translateY(6px);
+  box-shadow:
+    0 2px 0 var(--button-ledge),
+    0 10px 18px var(--button-shadow),
+    inset 0 1px 0 var(--button-highlight);
+}
+
+.themeButton:not(.themeButtonPressed):hover {
+  transform: translateY(-1px);
+}
+
+.themeButtonIconWrap {
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 12px;
+  background: var(--button-highlight);
+  flex: 0 0 34px;
+}
+
+.themeButtonCopy {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1px;
+}
+
+.themeButtonMeta {
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  opacity: 0.82;
+  text-transform: uppercase;
+}
+
+.themeButtonName {
+  font-size: 0.96rem;
+  line-height: 1.1;
+}
+
+.loadingState,
+.contentEmpty {
+  display: grid;
+  place-items: center;
+  gap: 10px;
+  min-height: 420px;
+  text-align: center;
+}
+
+.contentEmpty h3 {
+  font-size: 1.6rem;
+}
+
+.floatingAlert,
+.floatingAlertError {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  z-index: 60;
+  width: min(560px, calc(100vw - 32px));
+  padding: 14px 18px;
+  border-radius: 18px;
+  transform: translateX(-50%);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-strong);
+  backdrop-filter: blur(16px);
+}
+
+.floatingAlert {
+  background: var(--success-surface-strong);
+  color: var(--success-contrast);
+}
+
+.floatingAlertError {
+  background: var(--danger-soft);
+}
+
+.todayFloat,
+.accountFab,
+.composeFab {
+  position: fixed;
+  z-index: 40;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-strong);
+  backdrop-filter: blur(24px);
+}
+
+.todayFloat {
+  top: 104px;
+  right: 24px;
+  display: grid;
+  gap: 4px;
+  width: min(320px, calc(100vw - 48px));
+  padding: 14px 16px;
+  border-radius: 22px;
+  background: var(--panel-strong);
+  text-align: left;
+}
+
+.todayFloatLabel {
+  color: var(--text-soft);
+  font-size: 0.76rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.todayFloatMeta {
+  font-size: 0.95rem;
+}
+
+.todayFloatNext {
+  font-size: 0.95rem;
+  line-height: 1.35;
+}
+
+.accountFab,
+.composeFab {
+  gap: 10px;
+  padding: 14px 18px;
+  border-radius: 999px;
+  background: var(--panel-strong);
+  font-weight: 600;
+}
+
+.accountFab {
+  left: 22px;
+  bottom: 22px;
+}
+
+.composeFab {
+  right: 22px;
+  bottom: 22px;
+}
+
+.accountFabAvatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.headerReveal {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  z-index: 40;
+  width: 56px;
+  height: 38px;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-top: 0;
+  border-radius: 0 0 18px 18px;
+  background: var(--panel-strong);
+  box-shadow: var(--shadow-strong);
+  backdrop-filter: blur(24px);
+  transform: translateX(-50%);
+}
+
+.headerReveal:hover {
+  transform: translateX(-50%) translateY(-1px);
+}
+
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  background: var(--overlay);
+  backdrop-filter: blur(8px);
+}
+
+.modalShell {
+  position: relative;
+  display: grid;
+  gap: 18px;
+  width: min(760px, 100%);
+  max-height: calc(100vh - 36px);
+  padding: 22px;
+  overflow: auto;
+  border-radius: 30px;
+  background: var(--panel-strong);
+}
+
+.modalShellWide {
+  width: min(1360px, calc(100vw - 36px));
+  max-width: none;
+}
+
+.modalShellWide .dayFlowLayout {
+  min-height: min(80vh, 920px);
+}
+
+.modalCloseButton {
+  position: absolute;
+  top: 22px;
+  right: 22px;
+  z-index: 2;
+}
+
+.weatherPanel,
+.weatherHeader,
+.weatherHeaderCopy,
+.weatherLocation,
+.weatherHeroMain,
+.weatherHeroTemp,
+.weatherHeroMeta,
+.weatherHeroMetaItem,
+.weatherMetricsGrid,
+.weatherMetricCard,
+.weatherSection,
+.weatherSectionHeader,
+.weatherHourlyStrip,
+.weatherHourCard,
+.weatherDailyGrid,
+.weatherDayCard,
+.weatherDayHeader,
+.weatherDayTemps,
+.weatherDayStats,
+.weatherState {
+  display: grid;
+}
+
+.weatherPanel {
+  gap: 18px;
+}
+
+.weatherHeader {
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 16px;
+  align-items: start;
+  padding-right: 72px;
+}
+
+.weatherHeaderCopy,
+.weatherHeroTemp,
+.weatherSection,
+.weatherState {
+  gap: 8px;
+}
+
+.weatherTitle {
+  font-size: clamp(1.7rem, 2.4vw, 2.5rem);
+}
+
+.weatherLocation {
+  grid-auto-flow: column;
+  justify-content: start;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-soft);
+  font-size: 0.95rem;
+}
+
+.weatherHero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+  gap: 14px;
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 26px;
+  background: var(--panel);
+  box-shadow: var(--shadow);
+}
+
+.weatherHeroMain {
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 16px;
+  align-items: center;
+}
+
+.weatherHeroIcon {
+  display: grid;
+  place-items: center;
+  width: 72px;
+  height: 72px;
+  border-radius: 22px;
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.weatherHeroTemp strong {
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  line-height: 0.95;
+}
+
+.weatherHeroTemp span {
+  color: var(--text-soft);
+  font-size: 1rem;
+}
+
+.weatherHeroMeta {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.weatherHeroMetaItem,
+.weatherMetricCard,
+.weatherHourCard,
+.weatherDayCard {
+  gap: 6px;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: var(--control);
+}
+
+.weatherHeroMetaItem span,
+.weatherMetricCard span,
+.weatherDayLabel,
+.weatherFootnote {
+  color: var(--text-soft);
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.weatherHeroMetaItem strong,
+.weatherMetricCard strong,
+.weatherHourCard strong,
+.weatherDayTemps strong {
+  font-size: 1.02rem;
+}
+
+.weatherMetricsGrid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.weatherMetricCard {
+  align-content: start;
+}
+
+.weatherMetricCard svg {
+  color: var(--accent);
+}
+
+.weatherSectionHeader {
+  gap: 6px;
+}
+
+.weatherSectionHeader h3 {
+  font-size: 1.15rem;
+}
+
+.weatherHourlyStrip {
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(112px, 1fr);
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.weatherHourCard {
+  justify-items: start;
+}
+
+.weatherHourTime {
+  color: var(--text-soft);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.weatherHourlyStrip svg,
+.weatherDayHeader svg {
+  color: var(--accent);
+}
+
+.weatherDailyGrid {
+  grid-template-columns: repeat(auto-fit, minmax(168px, 1fr));
+  gap: 12px;
+}
+
+.weatherDayHeader {
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px;
+  align-items: start;
+}
+
+.weatherDayHeader strong {
+  font-size: 1rem;
+}
+
+.weatherDaySummary {
+  color: var(--text-soft);
+  font-size: 0.92rem;
+  line-height: 1.35;
+}
+
+.weatherDayTemps {
+  grid-template-columns: auto auto;
+  gap: 8px;
+  align-items: baseline;
+}
+
+.weatherDayTemps span {
+  color: var(--text-soft);
+}
+
+.weatherDayStats {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  color: var(--text-soft);
+  font-size: 0.82rem;
+}
+
+.weatherFootnote {
+  text-transform: none;
+}
+
+.weatherState {
+  place-items: center;
+  gap: 12px;
+  min-height: 360px;
+  text-align: center;
+}
+
+.weatherState svg {
+  color: var(--accent);
+}
+
+.keepDashboard,
+.keepSection,
+.keepSectionHeader,
+.keepGrid,
+.keepCard,
+.keepCardBody,
+.keepCardChecklist,
+.keepCardMeta,
+.keepSelectorPanel,
+.keepSelectorTop,
+.keepSelectorList,
+.keepSelectorCopy,
+.keepNotePanel,
+.keepNoteTop,
+.keepNoteTopActions,
+.keepChecklistPanel,
+.keepChecklistPanelTop,
+.keepChecklistList,
+.keepChecklistNode,
+.keepEditorMeta,
+.keepEditorActions {
+  display: grid;
+}
+
+.keepDashboard {
+  gap: 18px;
+  height: 100%;
+  overflow: auto;
+  padding-right: 4px;
+}
+
+.keepSection {
+  gap: 14px;
+}
+
+.keepSectionHeader {
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: center;
+}
+
+.keepSectionCount {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: var(--control);
+  color: var(--text-soft);
+  font-size: 0.85rem;
+}
+
+.keepGrid {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  align-items: start;
+}
+
+.keepCard {
+  gap: 14px;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  background: linear-gradient(180deg, var(--panel) 0%, var(--panel-muted) 100%);
+  box-shadow: var(--shadow);
+  text-align: left;
+}
+
+.keepCardOpen {
+  display: grid;
+  gap: 14px;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+}
+
+.keepCardTop,
+.keepSelectorChoice,
+.keepChecklistRow,
+.keepSearchField,
+.keepChecklistToggle,
+.keepSubItemButton,
+.keepPinButton {
+  display: flex;
+  align-items: center;
+}
+
+.keepCardTop {
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.keepCardType {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: var(--control);
+  color: var(--text-soft);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.keepPinButton {
+  gap: 8px;
+  min-height: 36px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--control);
+  color: var(--text-soft);
+  font: inherit;
+  font-weight: 600;
+}
+
+.keepPinButton:disabled {
+  opacity: 0.48;
+}
+
+.keepPinButtonActive {
+  background: var(--accent-soft);
+  color: var(--accent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 30%, transparent);
+}
+
+.keepCardBody {
+  gap: 12px;
+}
+
+.keepCardTitle {
+  font-size: 1.1rem;
+  line-height: 1.15;
+}
+
+.keepCardChecklist {
+  gap: 8px;
+}
+
+.keepCardChecklistItem,
+.keepCardChecklistItemMuted {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 8px;
+  align-items: center;
+  color: var(--text-soft);
+  font-size: 0.94rem;
+}
+
+.keepCardChecklistItemMuted {
+  grid-template-columns: 1fr;
+}
+
+.keepCardChecklistMark {
+  color: var(--accent);
+}
+
+.keepCardChecklistText {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.keepCardChecklistTextChecked {
+  opacity: 0.68;
+  text-decoration: line-through;
+}
+
+.keepCardTextPreview {
+  color: var(--text-soft);
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+}
+
+.keepCardMeta {
+  grid-auto-flow: column;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--text-soft);
+  font-size: 0.84rem;
+}
+
+.keepEmptyActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.keepSelectorPanel {
+  gap: 16px;
+}
+
+.keepSelectorTop {
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: center;
+}
+
+.keepSearchField {
+  gap: 10px;
+  padding: 0 14px;
+  min-height: 50px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--panel);
+  color: var(--text-soft);
+}
+
+.keepSearchField input {
+  flex: 1 1 auto;
+  min-width: 0;
+  background: transparent;
+  color: var(--text);
+}
+
+.keepSelectorStats {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  color: var(--text-soft);
+  font-size: 0.9rem;
+}
+
+.keepSelectorList {
+  gap: 10px;
+  max-height: min(62vh, 760px);
+  overflow: auto;
+  padding-right: 4px;
+}
+
+.keepSelectorRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: center;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: var(--panel);
+}
+
+.keepSelectorRowSelected {
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 30%, transparent);
+  background: color-mix(in srgb, var(--panel) 84%, var(--accent-soft) 16%);
+}
+
+.keepSelectorChoice {
+  gap: 12px;
+  min-width: 0;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+}
+
+.keepSelectorCheck {
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+  color: transparent;
+  background: var(--panel-strong);
+  flex: 0 0 24px;
+}
+
+.keepSelectorCheckActive {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--accent-contrast);
+}
+
+.keepSelectorCopy {
+  gap: 3px;
+  min-width: 0;
+}
+
+.keepSelectorCopy strong,
+.keepSelectorCopy span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.keepSelectorCopy span {
+  color: var(--text-soft);
+  font-size: 0.9rem;
+}
+
+.keepNotePanel {
+  gap: 16px;
+}
+
+.keepNoteTop {
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 14px;
+  align-items: start;
+}
+
+.keepNoteTopActions {
+  gap: 10px;
+  justify-items: end;
+}
+
+.keepSyncNotice {
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: var(--panel);
+  color: var(--text-soft);
+  line-height: 1.45;
+}
+
+.keepChecklistPanel {
+  gap: 14px;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  background: var(--panel);
+}
+
+.keepChecklistPanelTop {
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+  align-items: center;
+}
+
+.keepChecklistList {
+  gap: 10px;
+}
+
+.keepChecklistNode {
+  gap: 8px;
+}
+
+.keepChecklistRow {
+  gap: 10px;
+}
+
+.keepChecklistToggle {
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border-radius: 10px;
+  border: 1px solid var(--border-strong);
+  background: var(--panel-strong);
+  color: transparent;
+  font: inherit;
+  flex: 0 0 28px;
+}
+
+.keepChecklistToggleChecked {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--accent-contrast);
+}
+
+.keepChecklistInput {
+  min-width: 0;
+  flex: 1 1 auto;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--panel-strong);
+  color: var(--text);
+}
+
+.keepChecklistInputChecked {
+  color: var(--text-soft);
+  text-decoration: line-through;
+}
+
+.keepChecklistActions {
+  display: flex;
+  gap: 8px;
+}
+
+.keepChecklistActions .iconButton {
+  width: 38px;
+  height: 38px;
+  border-radius: 14px;
+}
+
+.keepChecklistNode > .keepChecklistList {
+  margin-left: 42px;
+}
+
+.keepSubItemButton {
+  gap: 8px;
+  margin-left: 42px;
+  width: fit-content;
+  padding: 0 12px;
+  min-height: 34px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--control);
+  color: var(--text-soft);
+  font: inherit;
+  font-size: 0.86rem;
+}
+
+.keepEditorMeta {
+  grid-auto-flow: column;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--text-soft);
+  font-size: 0.88rem;
+}
+
+.keepEditorActions {
+  grid-auto-flow: column;
+  justify-content: end;
+  gap: 10px;
+}
+
+.modalHeader {
+  gap: 16px;
+}
+
+.modalHeader h2 {
+  font-size: clamp(1.45rem, 2vw, 2.1rem);
+}
+
+.accountPanel,
+.editorPanel,
+.editorGrid,
+.field,
+.rangeField,
+.accountCalendarList,
+.dayListStack,
+.modalEventStack,
+.slotTooltipList {
+  display: grid;
+  gap: 14px;
+}
+
+.accountIdentity {
+  gap: 14px;
+}
+
+.accountAvatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.avatarFallback {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-gradient-start) 0%, var(--accent-gradient-end) 100%);
+  color: var(--accent-contrast);
+  font-weight: 700;
+}
+
+.accountIdentity strong,
+.accountCalendarRow strong {
+  display: block;
+}
+
+.accountIdentity span,
+.accountCalendarRow span {
+  color: var(--text-soft);
+}
+
+.accountCalendarRow {
+  gap: 12px;
+  justify-content: space-between;
+  padding: 14px 16px;
+  border-radius: 18px;
+  background: var(--panel-muted);
+}
+
+.accountCalendarRowHidden {
+  opacity: 0.68;
+}
+
+.accountCalendarContent {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.accountCalendarCopy {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.calendarVisibilityToggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: 999px;
+  background: var(--control-pressed);
+  color: var(--text-soft);
+  font-size: 0.86rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.calendarVisibilityToggleActive {
+  background: var(--success-surface-strong);
+  color: var(--success-contrast);
+}
+
+.calendarVisibilityLabel {
+  min-width: 46px;
+}
+
+.calendarVisibilityTrack {
+  position: relative;
+  width: 40px;
+  height: 22px;
+  border-radius: 999px;
+  background: var(--border-strong);
+  transition: background 160ms ease;
+}
+
+.calendarVisibilityToggleActive .calendarVisibilityTrack {
+  background: var(--success-line);
+}
+
+.calendarVisibilityThumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--panel-solid);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.16);
+  transition: transform 160ms ease;
+}
+
+.calendarVisibilityToggleActive .calendarVisibilityThumb {
+  transform: translateX(18px);
+}
+
+.calendarDot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex: 0 0 12px;
+}
+
+.secondaryButton,
+.primaryButton {
+  justify-content: center;
+  gap: 10px;
+  min-height: 50px;
+  padding: 0 18px;
+  border-radius: 18px;
+  font-weight: 600;
+}
+
+.secondaryButton {
+  background: var(--control);
+  color: var(--text);
+}
+
+.primaryButton {
+  background: linear-gradient(135deg, var(--accent-gradient-start) 0%, var(--accent-gradient-end) 100%);
+  color: var(--accent-contrast);
+}
+
+.primaryButton:disabled {
+  opacity: 0.7;
+}
+
+.field span,
+.rangeField span {
+  font-weight: 600;
+}
+
+.field input,
+.field textarea,
+.readOnlyField,
+.rangeReadOnly {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--input);
+  color: var(--text);
+}
+
+.field input,
+.field textarea {
+  padding: 14px 16px;
+}
+
+.readOnlyField {
+  min-height: 56px;
+  padding: 14px 16px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.readOnlyFieldEmpty {
+  color: var(--text-soft);
+}
+
+.readOnlyRichText {
+  display: grid;
+  gap: 10px;
+  white-space: normal;
+}
+
+.readOnlyRichText p,
+.readOnlyRichText ul,
+.readOnlyRichText ol {
+  margin: 0;
+}
+
+.readOnlyRichText ul,
+.readOnlyRichText ol {
+  padding-left: 1.2rem;
+}
+
+.inlineTextLink,
+.readOnlyRichText a {
+  color: var(--link);
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+  overflow-wrap: anywhere;
+}
+
+.field textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.field input:disabled,
+.field textarea:disabled {
+  opacity: 0.88;
+}
+
+.rangeReadOnly {
+  padding: 16px;
+  line-height: 1.5;
+}
+
+.rangePickerShell {
+  overflow: hidden;
+  border-radius: 24px;
+  border: 1px solid var(--border);
+  background: var(--control);
+}
+
+.fieldHelp {
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+.googleButtonSlot {
+  min-height: 44px;
+}
+
+.inlineSpinner {
+  animation: spin 1s linear infinite;
+}
+
+.eventSurface {
+  position: relative;
+  display: grid;
+  grid-template-columns: 6px minmax(0, 1fr);
+  width: 100%;
+  overflow: hidden;
+  border-radius: 18px;
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
+}
+
+.eventSurfaceReadOnly {
+  opacity: 0.9;
+}
+
+.eventAccent {
+  min-height: 100%;
+}
+
+.eventSurfaceBody {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+  padding: 12px 14px 12px 12px;
+}
+
+.eventInlineRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.eventInlineTitle,
+.eventInlineTime {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.eventInlineTitle {
+  font-size: 0.95rem;
+}
+
+.eventInlineDivider,
+.eventInlineTime {
+  color: var(--text-soft);
+  font-size: 0.84rem;
+}
+
+.eventSurfaceBody strong {
+  font-size: 1rem;
+  line-height: 1.2;
+}
+
+.eventSurfaceMeta {
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.eventCalendarLabel,
+.eventEditableHint {
+  padding: 4px 10px;
+  font-size: 0.78rem;
+}
+
+.eventLocation {
+  gap: 6px;
+}
+
+.eventDescription {
+  line-height: 1.45;
+}
+
+.eventSurfaceMini .eventSurfaceBody {
+  gap: 2px;
+  padding: 9px 11px 9px 10px;
+}
+
+.eventSurfaceMini .eventSurfaceBody strong,
+.eventSurfaceCompact .eventSurfaceBody strong {
+  font-size: 0.94rem;
+}
+
+.eventSurfaceMini .eventSurfaceMeta,
+.eventSurfaceCompact .eventSurfaceMeta {
+  gap: 6px;
+}
+
+.eventSurfaceTimeline {
+  position: absolute;
+  left: 6px;
+  right: 6px;
+  z-index: 3;
+  border-radius: 14px;
+}
+
+.eventSurfaceTimeline .eventSurfaceBody {
+  padding: 6px 10px;
+}
+
+.eventSurfaceTimeline .eventInlineRow,
+.eventSurfaceMini .eventInlineRow,
+.eventSurfaceCompact .eventInlineRow {
+  gap: 6px;
+}
+
+.eventSurfaceTimeline .eventInlineTitle,
+.eventSurfaceMini .eventInlineTitle,
+.eventSurfaceCompact .eventInlineTitle {
+  font-size: 0.88rem;
+}
+
+.monthGrid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 12px;
+  height: 100%;
+  min-height: 0;
+  overflow: auto;
+  padding-right: 4px;
+}
+
+.monthCard {
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  gap: 12px;
+  min-height: 210px;
+  padding: 16px;
+  border-radius: 28px;
+}
+
+.monthCardDroppable {
+  outline: 2px dashed var(--accent);
+  outline-offset: -6px;
+}
+
+.dayLabel {
+  color: var(--text-soft);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.dayNumber {
+  font-size: clamp(2rem, 3vw, 3rem);
+  line-height: 0.95;
+}
+
+.occupancyBadge {
+  white-space: nowrap;
+}
+
+.monthCardMeta {
+  font-size: 0.95rem;
+}
+
+.monthEventStack {
+  display: grid;
+  gap: 8px;
+  align-content: start;
+}
+
+.moreEventsButton {
+  justify-self: start;
+  padding: 10px 12px;
+  border-radius: 16px;
+  background: var(--control);
+  color: var(--text-soft);
+  font-weight: 600;
+}
+
+.monthFreeChip {
+  display: grid;
+  gap: 2px;
+  padding: 9px 11px;
+  border-radius: 16px;
+  border: 1px solid var(--success-line);
+  background: var(--success-surface-strong);
+  color: var(--success-contrast);
+}
+
+.monthFreeLabel {
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.monthFreeChip strong {
+  font-size: 0.88rem;
+  line-height: 1.25;
+}
+
+.weekTimelineShell {
+  height: 100%;
+  min-height: 0;
+  overflow: auto;
+  border-radius: 26px;
+  padding-right: 4px;
+}
+
+.weekHeaderSticky {
+  position: sticky;
+  top: 0;
+  z-index: 4;
+  display: grid;
+  grid-template-columns: 76px repeat(7, minmax(190px, 1fr));
+  gap: 12px;
+  padding-bottom: 12px;
+  background: linear-gradient(180deg, var(--background-strong), var(--panel-strong));
+}
+
+.weekTimeGutter {
+  min-height: 1px;
+}
+
+.weekHeaderCell {
+  display: grid;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 20px;
+}
+
+.weekHeaderCell span {
+  color: var(--text-soft);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.weekHeaderCell strong {
+  font-size: 1.45rem;
+}
+
+.weekTimelineBody {
+  display: grid;
+  grid-template-columns: 76px repeat(7, minmax(190px, 1fr));
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.weekTimeColumn {
+  display: grid;
+  align-items: start;
+}
+
+.weekTimeCell {
+  padding-top: 4px;
+  color: var(--text-soft);
+  font-size: 0.84rem;
+}
+
+.weekDayColumn {
+  position: relative;
+  min-width: 0;
+  border-radius: 22px;
+  overflow: hidden;
+}
+
+.weekSlotGrid {
+  display: grid;
+  width: 100%;
+}
+
+.weekSlotCell {
+  width: 100%;
+  border-bottom: 1px solid var(--border);
+  background: var(--panel-muted);
+}
+
+.weekSlotCell:hover,
+.navLabelButton:hover,
+.clockSlot:hover,
+.moreEventsButton:hover,
+.secondaryButton:hover,
+.primaryButton:hover,
+.iconButton:hover,
+.controlButton:hover,
+.segmentedButton:hover,
+.todayFloat:hover,
+.accountFab:hover,
+.composeFab:hover,
+.eventSurface:hover {
+  transform: translateY(-1px);
+}
+
+.weekEventLayer {
+  position: absolute;
+  inset: 0;
+}
+
+.weekBoundaryCard,
+.dayBoundaryCard {
+  display: inline-flex;
+  align-items: center;
+  max-width: 100%;
+  padding: 7px 10px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--panel-strong);
+  color: var(--text-soft);
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1.2;
+  box-shadow: var(--shadow-soft);
+}
+
+.weekBoundaryFooter {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  left: 10px;
+  z-index: 4;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.freeSlotBand {
+  position: absolute;
+  inset-inline: 8px;
+  z-index: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  padding: 10px 10px 12px;
+  border-radius: 18px;
+  border: 1px solid var(--success-line);
+  background: var(--success-surface);
+  box-shadow:
+    inset 4px 0 0 var(--success-line),
+    0 14px 28px rgba(0, 0, 0, 0.08);
+  pointer-events: none;
+}
+
+.freeSlotBandCompact {
+  z-index: 2;
+  align-items: center;
+  padding: 2px 4px;
+  border-radius: 12px;
+}
+
+.freeSlotLine {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 4px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--success-line) 0%, var(--success) 100%);
+  transform: translateX(-50%);
+}
+
+.freeSlotLabel {
+  max-width: 100%;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: var(--success-surface-strong);
+  color: var(--success-contrast);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+}
+
+.freeSlotLabelCompact {
+  padding: 1px 5px;
+  font-size: 0.62rem;
+  line-height: 1.1;
+  box-shadow: 0 4px 10px rgba(68, 124, 82, 0.1);
+}
+
+.dayFlowLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
+  gap: 18px;
+  height: 100%;
+  min-height: 0;
+}
+
+.dayFlowPanel {
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  gap: 16px;
+  min-height: 0;
+  padding: 20px;
+  border-radius: 28px;
+}
+
+.dayFlowHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.dayFlowTitle {
+  font-size: clamp(1.65rem, 2.4vw, 2.5rem);
+}
+
+.dayFlowHint {
+  margin-top: 8px;
+  color: var(--text-soft);
+  line-height: 1.45;
+}
+
+.dayFlowMetrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  min-width: min(100%, 360px);
+}
+
+.dayFlowMetric,
+.dayFlowMetricFree {
+  display: grid;
+  gap: 4px;
+  padding: 12px 14px;
+  border-radius: 18px;
+  background: var(--control);
+}
+
+.dayFlowMetric span,
+.dayFlowMetricFree span {
+  color: var(--text-soft);
+  font-size: 0.74rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.dayFlowMetric strong,
+.dayFlowMetricFree strong {
+  font-size: 1rem;
+  line-height: 1.25;
+}
+
+.dayFlowMetricFree {
+  background: var(--success-surface-strong);
+  color: var(--success-contrast);
+}
+
+.dayAllDayRow {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 10px;
+}
+
+.dayBoundaryIntro,
+.dayBoundaryOutro {
+  display: flex;
+}
+
+.dayBoundaryIntro {
+  justify-content: flex-start;
+}
+
+.dayBoundaryOutro {
+  justify-content: flex-end;
+}
+
+.dayTimelineShell {
+  display: grid;
+  grid-template-columns: 78px minmax(0, 1fr);
+  gap: 12px;
+  min-height: 0;
+  overflow: auto;
+  padding-right: 4px;
+}
+
+.dayTimelineAxis {
+  display: grid;
+  align-items: start;
+}
+
+.dayTimelineAxisLabel {
+  color: var(--text-soft);
+  font-size: 0.82rem;
+}
+
+.dayTimelineStage {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.dayTimelineGrid {
+  display: grid;
+  width: 100%;
+}
+
+.dayTimelineCell {
+  width: 100%;
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(90deg, var(--panel-muted) 0%, rgba(255, 255, 255, 0.08) 100%);
+}
+
+.dayTimelineLayer {
+  position: absolute;
+  inset: 0;
+}
+
+.dayFreeLine {
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  z-index: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  padding: 10px 10px 12px;
+  border-radius: 18px;
+  border: 1px solid var(--success-line);
+  background: var(--success-surface);
+  box-shadow:
+    inset 4px 0 0 var(--success-line),
+    0 14px 28px rgba(0, 0, 0, 0.08);
+  pointer-events: none;
+}
+
+.dayFreeLineCompact {
+  z-index: 2;
+  align-items: center;
+  padding: 2px 4px;
+  border-radius: 12px;
+}
+
+.dayFreeLineLabel {
+  max-width: 100%;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: var(--success-surface-strong);
+  color: var(--success-contrast);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+}
+
+.dayFreeLineLabelCompact {
+  padding: 1px 5px;
+  font-size: 0.66rem;
+  line-height: 1.1;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.dayFreeBadge {
+  color: var(--success);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.dayFreeTitle {
+  color: var(--success-contrast);
+  font-size: 0.95rem;
+  line-height: 1.2;
+}
+
+.dayFreeMeta {
+  color: var(--success);
+  font-size: 0.82rem;
+}
+
+.dayAgendaGroup,
+.dayAgendaGroupStack {
+  display: grid;
+  gap: 10px;
+}
+
+.dayAgendaFreeCard {
+  display: grid;
+  gap: 4px;
+  padding: 12px 14px;
+  border-radius: 18px;
+  border: 1px solid var(--success-line);
+  background: var(--success-surface-strong);
+  align-content: start;
+}
+
+.dayAgendaFreeCardCompact {
+  gap: 2px;
+  padding: 6px 10px;
+  align-content: center;
+}
+
+.dayAgendaFreeCardCompact .dayFreeTitle {
+  font-size: 0.86rem;
+}
+
+.dayAgendaFreeCardCompact .dayFreeMeta {
+  font-size: 0.74rem;
+}
+
+.dayClockLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+  gap: 18px;
+  height: 100%;
+  min-height: 0;
+}
+
+.dayClockShell,
+.dayListColumn {
+  min-height: 0;
+  border-radius: 28px;
+}
+
+.dayClockShell {
+  display: grid;
+  place-items: center;
+  padding: 28px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at center, rgba(255, 255, 255, 0.42) 0%, transparent 36%),
+    radial-gradient(circle at center, rgba(255, 238, 221, 0.68) 0%, rgba(214, 155, 114, 0.56) 58%, rgba(183, 115, 64, 0.72) 100%);
+}
+
+.dayClockFace {
+  position: relative;
+  --clock-ring-radius: clamp(180px, 30vw, 282px);
+  --clock-label-radius: clamp(222px, 35vw, 334px);
+  width: min(100%, 780px);
+  aspect-ratio: 1;
+  min-height: 0;
+  border-radius: 50%;
+}
+
+.dayClockFace::before {
+  content: "";
+  position: absolute;
+  inset: 4%;
+  border-radius: 50%;
+  border: 1px solid rgba(111, 93, 68, 0.14);
+  background:
+    radial-gradient(circle at center, rgba(255, 252, 245, 0.98) 0 24%, rgba(255, 250, 242, 0.92) 24% 44%, rgba(255, 255, 255, 0.16) 44% 100%);
+  box-shadow:
+    inset 0 0 0 18px rgba(255, 255, 255, 0.1),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.32),
+    0 24px 50px rgba(78, 51, 26, 0.16);
+}
+
+.dayClockRingFill,
+.dayClockRingMask {
+  position: absolute;
+  border-radius: 50%;
+}
+
+.dayClockRingFill {
+  inset: 10%;
+  opacity: 0.92;
+  box-shadow: inset 0 0 32px rgba(255, 255, 255, 0.18);
+}
+
+.dayClockRingMask {
+  inset: 28%;
+  background: rgba(255, 252, 245, 0.96);
+  border: 1px solid rgba(111, 93, 68, 0.12);
+  box-shadow: 0 24px 50px rgba(56, 42, 20, 0.14);
+}
+
+.clockSlot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid rgba(111, 93, 68, 0.14);
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow: 0 10px 22px rgba(68, 51, 27, 0.12);
+  transform: translate(-50%, -50%) rotate(var(--clock-angle)) translateY(calc(var(--clock-ring-radius) * -1)) rotate(calc(var(--clock-angle) * -1));
+}
+
+.clockSlotBusy {
+  width: 42px;
+  height: 42px;
+  border-color: rgba(176, 93, 39, 0.24);
+  background: rgba(255, 244, 236, 0.94);
+}
+
+.clockSlotActive {
+  border-color: rgba(176, 93, 39, 0.44);
+  box-shadow:
+    0 0 0 8px rgba(255, 255, 255, 0.24),
+    0 12px 26px rgba(88, 51, 20, 0.2);
+}
+
+.clockSlot span {
+  color: var(--text-soft);
+  font-size: 0.78rem;
+}
+
+.clockSlot strong {
+  font-size: 0.92rem;
+}
+
+.clockSlotDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(111, 93, 68, 0.32);
+}
+
+.clockHourLabel {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: rgba(84, 66, 43, 0.72);
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  pointer-events: none;
+  transform: translate(-50%, -50%) rotate(var(--clock-angle)) translateY(calc(var(--clock-label-radius) * -1)) rotate(calc(var(--clock-angle) * -1));
+}
+
+.dayClockCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  align-content: start;
+  gap: 12px;
+  width: min(42%, 320px);
+  min-height: 260px;
+  padding: 22px;
+  border-radius: 28px;
+  border: 1px solid rgba(111, 93, 68, 0.12);
+  background: rgba(255, 252, 245, 0.95);
+  box-shadow: 0 22px 44px rgba(56, 42, 20, 0.14);
+  transform: translate(-50%, -50%);
+}
+
+.dayClockTitle {
+  font-size: clamp(1.8rem, 2.6vw, 2.7rem);
+}
+
+.dayClockHint {
+  color: var(--text-soft);
+  line-height: 1.45;
+}
+
+.dayClockMetrics {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.dayClockMetric {
+  display: grid;
+  gap: 4px;
+  padding: 10px 12px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.74);
+}
+
+.dayClockMetric span {
+  color: var(--text-soft);
+  font-size: 0.76rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.dayClockMetric strong {
+  font-size: 1.05rem;
+}
+
+.dayClockPreviewList {
+  display: grid;
+  gap: 8px;
+}
+
+.dayClockPreviewChip {
+  display: grid;
+  gap: 2px;
+  padding: 10px 12px;
+  border-radius: 16px;
+  border: 1px solid rgba(111, 93, 68, 0.1);
+  background: rgba(255, 255, 255, 0.78);
+  text-align: left;
+}
+
+.dayClockPreviewChip strong {
+  font-size: 0.95rem;
+}
+
+.dayClockPreviewChip span {
+  color: var(--text-soft);
+  font-size: 0.84rem;
+}
+
+.dayListColumn {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 12px;
+  padding: 18px;
+}
+
+.dayListHeading {
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.dayListHeading h2 {
+  font-size: clamp(1.35rem, 2vw, 2rem);
+  text-align: right;
+}
+
+.dayListStack {
+  align-content: start;
+  overflow: auto;
+  padding-right: 4px;
+}
+
+.emptyDayCard {
+  padding: 20px;
+}
+
+.emptyDayCard h4 {
+  font-size: 1.4rem;
+}
+
+.modalEventStack {
+  align-content: start;
+}
+
+:global(.react-datepicker) {
+  width: 100%;
+  border: 0;
+  font-family: var(--font-body), sans-serif;
+  background: transparent;
+}
+
+:global(.react-datepicker__month-container),
+:global(.react-datepicker__time-container) {
+  float: none;
+}
+
+:global(.react-datepicker__time-container) {
+  border-left: 1px solid rgba(111, 93, 68, 0.12);
+}
+
+:global(.react-datepicker__header) {
+  border-bottom: 1px solid rgba(111, 93, 68, 0.1);
+  background: rgba(255, 248, 240, 0.95);
+}
+
+:global(.react-datepicker__day--selected),
+:global(.react-datepicker__day--in-range),
+:global(.react-datepicker__time-list-item--selected) {
+  background: #b05d27 !important;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 1199px) {
+  .todayFloat {
+    top: auto;
+    right: 18px;
+    bottom: 86px;
+    width: min(300px, calc(100vw - 36px));
+  }
+
+  .nowChipFloating {
+    top: 16px;
+  }
+
+  .dayFlowLayout,
+  .dayClockLayout {
+    grid-template-columns: 1fr;
+  }
+
+  .weatherHero {
+    grid-template-columns: 1fr;
+  }
+
+  .weatherMetricsGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .dayClockFace {
+    width: min(100%, 700px);
+  }
+
+  .keepGrid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
+}
+
+@media (max-width: 899px) {
+  .page {
+    padding: 12px 12px 112px;
+  }
+
+  .shell {
+    min-height: calc(100vh - 24px);
+  }
+
+  .headerMain,
+  .headerControls,
+  .boardToolbar,
+  .dayListHeading {
+    align-items: flex-start;
+  }
+
+  .boardToolbar {
+    grid-template-columns: 1fr;
+    justify-items: stretch;
+  }
+
+  .boardToolbarStart,
+  .boardToolbarEnd,
+  .boardRangeNav {
+    justify-self: stretch;
+  }
+
+  .boardToolbarEnd {
+    justify-content: flex-start;
+  }
+
+  .boardRangeNav {
+    justify-content: space-between;
+  }
+
+  .headerTitleRow {
+    flex-wrap: wrap;
+    white-space: normal;
+  }
+
+  .headerMetaDivider {
+    display: none;
+  }
+
+  .dayListHeading h2 {
+    text-align: left;
+  }
+
+  .monthGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .dayFlowHeader {
+    grid-template-columns: 1fr;
+    display: grid;
+  }
+
+  .weatherHeader {
+    grid-template-columns: 1fr;
+    padding-right: 0;
+  }
+
+  .weatherHeroMeta {
+    grid-template-columns: 1fr;
+  }
+
+  .dayFlowMetrics {
+    grid-template-columns: 1fr;
+    min-width: 0;
+  }
+
+  .dayTimelineShell {
+    grid-template-columns: 64px minmax(0, 1fr);
+  }
+
+  .weekHeaderSticky,
+  .weekTimelineBody {
+    grid-template-columns: 64px repeat(7, minmax(150px, 1fr));
+  }
+
+  .dayClockCenter {
+    width: min(66%, 380px);
+  }
+
+  .keepSectionHeader,
+  .keepSelectorTop,
+  .keepNoteTop {
+    grid-template-columns: 1fr;
+  }
+
+  .keepNoteTopActions {
+    justify-items: stretch;
+  }
+
+  .keepEditorMeta,
+  .keepEditorActions {
+    grid-auto-flow: row;
+    justify-content: stretch;
+  }
+}
+
+@media (max-width: 699px) {
+  .headerBar,
+  .board {
+    border-radius: 24px;
+  }
+
+  .headerControls,
+  .inlineMeta {
+    width: 100%;
+  }
+
+  .headerControls {
+    justify-content: flex-start;
+  }
+
+  .themeButton {
+    min-width: 0;
+    flex: 1 1 184px;
+  }
+
+  .weatherMetricsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .weatherHourlyStrip {
+    grid-auto-columns: minmax(124px, 1fr);
+  }
+
+  .weatherDailyGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .keepGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .keepCardMeta,
+  .keepSelectorRow,
+  .keepChecklistPanelTop {
+    grid-template-columns: 1fr;
+  }
+
+  .keepCardMeta {
+    grid-auto-flow: row;
+  }
+
+  .keepSelectorRow {
+    justify-items: stretch;
+  }
+
+  .keepSelectorChoice {
+    width: 100%;
+  }
+
+  .nowChip {
+    order: -1;
+  }
+
+  .boardRangeNav {
+    gap: 10px;
+  }
+
+  .navLabelButton {
+    min-width: 0;
+    padding: 0 12px;
+    font-size: 0.92rem;
+  }
+
+  .monthGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .dayFlowPanel,
+  .dayListColumn {
+    padding: 16px;
+  }
+
+  .dayTimelineShell {
+    grid-template-columns: 54px minmax(0, 1fr);
+    gap: 10px;
+  }
+
+  .dayClockFace {
+    width: min(100%, 560px);
+  }
+
+  .clockSlot {
+    width: 26px;
+    height: 26px;
+  }
+
+  .clockSlotBusy {
+    width: 34px;
+    height: 34px;
+  }
+
+  .clockHourLabel {
+    font-size: 0.68rem;
+  }
+
+  .dayClockCenter {
+    width: min(74%, 288px);
+    min-height: 236px;
+    padding: 18px;
+  }
+
+  .accountFab,
+  .composeFab {
+    bottom: 16px;
+  }
+
+  .accountFab {
+    left: 16px;
+    padding: 12px 14px;
+  }
+
+  .composeFab {
+    right: 16px;
+    padding: 12px 16px;
+  }
+
+  .todayFloat {
+    right: 12px;
+    bottom: 76px;
+    left: 12px;
+    width: auto;
+  }
+
+  .nowChipFloating {
+    top: 12px;
+    right: 12px;
+  }
+
+  .headerReveal {
+    width: 52px;
+    height: 34px;
+  }
+}

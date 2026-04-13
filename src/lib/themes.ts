@@ -1,0 +1,890 @@
+export type AppTheme = {
+  id: string;
+  label: string;
+  shortLabel: string;
+  colorScheme: "light" | "dark";
+  vars: Record<`--${string}`, string>;
+};
+
+type ThemeTokens = {
+  background: string;
+  backgroundStrong: string;
+  panel: string;
+  panelStrong: string;
+  panelMuted: string;
+  panelSolid: string;
+  control: string;
+  controlMuted: string;
+  controlStrong: string;
+  controlPressed: string;
+  input: string;
+  border: string;
+  borderStrong: string;
+  text: string;
+  textSoft: string;
+  textInverse: string;
+  link: string;
+  accent: string;
+  accentSoft: string;
+  accentGradientStart: string;
+  accentGradientEnd: string;
+  accentContrast: string;
+  success: string;
+  successContrast: string;
+  successSurface: string;
+  successSurfaceStrong: string;
+  successLine: string;
+  danger: string;
+  dangerSoft: string;
+  shadow: string;
+  shadowSoft: string;
+  shadowStrong: string;
+  overlay: string;
+  bodyGradient: string;
+  bodyGlow1: string;
+  bodyGlow2: string;
+  gridLine: string;
+  gridLineSoft: string;
+  selection: string;
+  buttonTop: string;
+  buttonBottom: string;
+  buttonBorder: string;
+  buttonLedge: string;
+  buttonShadow: string;
+  buttonHighlight: string;
+  buttonText: string;
+};
+
+type ThemeMeta = Pick<AppTheme, "id" | "label" | "shortLabel" | "colorScheme">;
+
+const LIGHT_BASE: ThemeTokens = {
+  background: "#eef3fb",
+  backgroundStrong: "#fbfdff",
+  panel: "rgba(252, 254, 255, 0.72)",
+  panelStrong: "rgba(252, 254, 255, 0.9)",
+  panelMuted: "rgba(255, 255, 255, 0.56)",
+  panelSolid: "#ffffff",
+  control: "rgba(255, 255, 255, 0.8)",
+  controlMuted: "rgba(255, 255, 255, 0.66)",
+  controlStrong: "#ffffff",
+  controlPressed: "rgba(242, 247, 255, 0.98)",
+  input: "rgba(255, 255, 255, 0.76)",
+  border: "rgba(104, 126, 155, 0.18)",
+  borderStrong: "rgba(81, 106, 141, 0.3)",
+  text: "#142033",
+  textSoft: "#5a6f8d",
+  textInverse: "#f8fbff",
+  link: "#1b69d8",
+  accent: "#2c79ff",
+  accentSoft: "rgba(44, 121, 255, 0.14)",
+  accentGradientStart: "#63a5ff",
+  accentGradientEnd: "#2c79ff",
+  accentContrast: "#f8fbff",
+  success: "#228a53",
+  successContrast: "#0c351f",
+  successSurface:
+    "linear-gradient(180deg, rgba(221, 255, 235, 0.95) 0%, rgba(196, 245, 214, 0.9) 100%)",
+  successSurfaceStrong: "rgba(240, 255, 245, 0.84)",
+  successLine: "#52c97d",
+  danger: "#c34e43",
+  dangerSoft: "rgba(255, 226, 220, 0.94)",
+  shadow: "0 24px 60px rgba(53, 79, 114, 0.14)",
+  shadowSoft: "0 12px 24px rgba(53, 79, 114, 0.12)",
+  shadowStrong: "0 18px 38px rgba(39, 58, 86, 0.18)",
+  overlay: "rgba(15, 26, 43, 0.26)",
+  bodyGradient: "linear-gradient(155deg, #edf4ff 0%, #e6edf8 48%, #e9f1f7 100%)",
+  bodyGlow1:
+    "radial-gradient(circle at top left, rgba(255, 255, 255, 0.92), transparent 34%)",
+  bodyGlow2:
+    "radial-gradient(circle at bottom right, rgba(137, 198, 255, 0.18), transparent 28%)",
+  gridLine: "rgba(255, 255, 255, 0.08)",
+  gridLineSoft: "rgba(255, 255, 255, 0.05)",
+  selection: "rgba(44, 121, 255, 0.2)",
+  buttonTop: "#ffffff",
+  buttonBottom: "#dcecff",
+  buttonBorder: "rgba(121, 160, 214, 0.5)",
+  buttonLedge: "rgba(111, 150, 205, 0.55)",
+  buttonShadow: "rgba(58, 93, 141, 0.22)",
+  buttonHighlight: "rgba(255, 255, 255, 0.92)",
+  buttonText: "#18345c",
+};
+
+const DARK_BASE: ThemeTokens = {
+  background: "#0f1521",
+  backgroundStrong: "#171f2e",
+  panel: "rgba(24, 30, 44, 0.76)",
+  panelStrong: "rgba(22, 28, 42, 0.92)",
+  panelMuted: "rgba(31, 40, 59, 0.62)",
+  panelSolid: "#1a2333",
+  control: "rgba(37, 47, 67, 0.84)",
+  controlMuted: "rgba(34, 43, 60, 0.7)",
+  controlStrong: "#273147",
+  controlPressed: "rgba(31, 41, 58, 0.98)",
+  input: "rgba(32, 40, 58, 0.88)",
+  border: "rgba(134, 159, 194, 0.18)",
+  borderStrong: "rgba(170, 193, 227, 0.32)",
+  text: "#e7edf8",
+  textSoft: "#9eadc6",
+  textInverse: "#09111f",
+  link: "#89b4ff",
+  accent: "#8db8ff",
+  accentSoft: "rgba(141, 184, 255, 0.16)",
+  accentGradientStart: "#9bc5ff",
+  accentGradientEnd: "#5d8dff",
+  accentContrast: "#09111f",
+  success: "#67d390",
+  successContrast: "#102919",
+  successSurface:
+    "linear-gradient(180deg, rgba(26, 63, 41, 0.92) 0%, rgba(33, 92, 55, 0.84) 100%)",
+  successSurfaceStrong: "rgba(24, 56, 37, 0.9)",
+  successLine: "#64d48f",
+  danger: "#ff8579",
+  dangerSoft: "rgba(93, 31, 36, 0.92)",
+  shadow: "0 24px 60px rgba(0, 0, 0, 0.36)",
+  shadowSoft: "0 12px 24px rgba(0, 0, 0, 0.28)",
+  shadowStrong: "0 18px 38px rgba(0, 0, 0, 0.34)",
+  overlay: "rgba(2, 6, 12, 0.52)",
+  bodyGradient: "linear-gradient(160deg, #0f1521 0%, #141c29 46%, #101722 100%)",
+  bodyGlow1:
+    "radial-gradient(circle at top left, rgba(97, 132, 199, 0.18), transparent 34%)",
+  bodyGlow2:
+    "radial-gradient(circle at bottom right, rgba(42, 111, 255, 0.14), transparent 30%)",
+  gridLine: "rgba(188, 205, 231, 0.07)",
+  gridLineSoft: "rgba(188, 205, 231, 0.04)",
+  selection: "rgba(141, 184, 255, 0.26)",
+  buttonTop: "#425171",
+  buttonBottom: "#24304a",
+  buttonBorder: "rgba(148, 177, 224, 0.44)",
+  buttonLedge: "rgba(14, 20, 33, 0.82)",
+  buttonShadow: "rgba(0, 0, 0, 0.42)",
+  buttonHighlight: "rgba(255, 255, 255, 0.12)",
+  buttonText: "#eef4ff",
+};
+
+function toCssVars(tokens: ThemeTokens): Record<`--${string}`, string> {
+  return {
+    "--background": tokens.background,
+    "--background-strong": tokens.backgroundStrong,
+    "--panel": tokens.panel,
+    "--panel-strong": tokens.panelStrong,
+    "--panel-muted": tokens.panelMuted,
+    "--panel-solid": tokens.panelSolid,
+    "--control": tokens.control,
+    "--control-muted": tokens.controlMuted,
+    "--control-strong": tokens.controlStrong,
+    "--control-pressed": tokens.controlPressed,
+    "--input": tokens.input,
+    "--border": tokens.border,
+    "--border-strong": tokens.borderStrong,
+    "--text": tokens.text,
+    "--text-soft": tokens.textSoft,
+    "--text-inverse": tokens.textInverse,
+    "--link": tokens.link,
+    "--accent": tokens.accent,
+    "--accent-soft": tokens.accentSoft,
+    "--accent-gradient-start": tokens.accentGradientStart,
+    "--accent-gradient-end": tokens.accentGradientEnd,
+    "--accent-contrast": tokens.accentContrast,
+    "--success": tokens.success,
+    "--success-contrast": tokens.successContrast,
+    "--success-surface": tokens.successSurface,
+    "--success-surface-strong": tokens.successSurfaceStrong,
+    "--success-line": tokens.successLine,
+    "--danger": tokens.danger,
+    "--danger-soft": tokens.dangerSoft,
+    "--shadow": tokens.shadow,
+    "--shadow-soft": tokens.shadowSoft,
+    "--shadow-strong": tokens.shadowStrong,
+    "--overlay": tokens.overlay,
+    "--body-gradient": tokens.bodyGradient,
+    "--body-glow-1": tokens.bodyGlow1,
+    "--body-glow-2": tokens.bodyGlow2,
+    "--grid-line": tokens.gridLine,
+    "--grid-line-soft": tokens.gridLineSoft,
+    "--selection": tokens.selection,
+    "--button-top": tokens.buttonTop,
+    "--button-bottom": tokens.buttonBottom,
+    "--button-border": tokens.buttonBorder,
+    "--button-ledge": tokens.buttonLedge,
+    "--button-shadow": tokens.buttonShadow,
+    "--button-highlight": tokens.buttonHighlight,
+    "--button-text": tokens.buttonText,
+  };
+}
+
+function createTheme(
+  meta: ThemeMeta,
+  base: ThemeTokens,
+  overrides: Partial<ThemeTokens>,
+): AppTheme {
+  return {
+    ...meta,
+    vars: toCssVars({
+      ...base,
+      ...overrides,
+    }),
+  };
+}
+
+export const APP_THEMES: AppTheme[] = [
+  createTheme(
+    {
+      id: "apple-glass-day",
+      label: "Apple Glass Day",
+      shortLabel: "Glass Day",
+      colorScheme: "light",
+    },
+    LIGHT_BASE,
+    {
+      bodyGlow1:
+        "radial-gradient(circle at top left, rgba(255, 255, 255, 0.98), transparent 32%)",
+      bodyGlow2:
+        "radial-gradient(circle at bottom right, rgba(140, 197, 255, 0.24), transparent 28%)",
+      panel: "rgba(252, 254, 255, 0.62)",
+      panelStrong: "rgba(252, 254, 255, 0.86)",
+      control: "rgba(255, 255, 255, 0.74)",
+      controlMuted: "rgba(255, 255, 255, 0.58)",
+      accent: "#4a87ff",
+      accentGradientStart: "#9fd4ff",
+      accentGradientEnd: "#4a87ff",
+      buttonTop: "#ffffff",
+      buttonBottom: "#cfe7ff",
+      buttonBorder: "rgba(118, 170, 240, 0.46)",
+      buttonLedge: "rgba(102, 145, 199, 0.54)",
+      buttonShadow: "rgba(58, 96, 150, 0.22)",
+    },
+  ),
+  createTheme(
+    {
+      id: "apple-glass-night",
+      label: "Apple Glass Night",
+      shortLabel: "Glass Night",
+      colorScheme: "dark",
+    },
+    DARK_BASE,
+    {
+      background: "#0a111d",
+      panel: "rgba(21, 28, 43, 0.68)",
+      panelStrong: "rgba(20, 26, 40, 0.88)",
+      control: "rgba(31, 42, 63, 0.82)",
+      controlMuted: "rgba(30, 40, 60, 0.68)",
+      accent: "#7ec0ff",
+      accentSoft: "rgba(126, 192, 255, 0.16)",
+      accentGradientStart: "#a9dbff",
+      accentGradientEnd: "#5e9bff",
+      bodyGradient: "linear-gradient(160deg, #0a111d 0%, #0e1624 48%, #0b1420 100%)",
+      bodyGlow1:
+        "radial-gradient(circle at top left, rgba(118, 177, 255, 0.2), transparent 34%)",
+      bodyGlow2:
+        "radial-gradient(circle at bottom right, rgba(64, 206, 255, 0.16), transparent 28%)",
+      buttonTop: "#5d769f",
+      buttonBottom: "#22304a",
+      buttonBorder: "rgba(162, 205, 255, 0.38)",
+      buttonText: "#f3f7ff",
+    },
+  ),
+  createTheme(
+    {
+      id: "dracula-night",
+      label: "Dracula Night",
+      shortLabel: "Dracula",
+      colorScheme: "dark",
+    },
+    DARK_BASE,
+    {
+      background: "#1f2230",
+      backgroundStrong: "#282a36",
+      panel: "rgba(40, 42, 54, 0.78)",
+      panelStrong: "rgba(40, 42, 54, 0.94)",
+      panelSolid: "#2b2e3b",
+      control: "rgba(56, 58, 76, 0.86)",
+      controlMuted: "rgba(52, 54, 69, 0.72)",
+      controlStrong: "#44475a",
+      controlPressed: "rgba(47, 50, 66, 0.98)",
+      input: "rgba(46, 49, 66, 0.9)",
+      border: "rgba(189, 147, 249, 0.2)",
+      borderStrong: "rgba(255, 184, 108, 0.34)",
+      text: "#f8f8f2",
+      textSoft: "#bdc0d9",
+      textInverse: "#1b1d28",
+      link: "#8be9fd",
+      accent: "#bd93f9",
+      accentSoft: "rgba(189, 147, 249, 0.18)",
+      accentGradientStart: "#ff79c6",
+      accentGradientEnd: "#bd93f9",
+      success: "#50fa7b",
+      successContrast: "#10261b",
+      successSurface:
+        "linear-gradient(180deg, rgba(48, 92, 67, 0.94) 0%, rgba(46, 121, 83, 0.86) 100%)",
+      successSurfaceStrong: "rgba(40, 82, 59, 0.92)",
+      successLine: "#50fa7b",
+      danger: "#ff5555",
+      dangerSoft: "rgba(95, 37, 46, 0.92)",
+      bodyGradient: "linear-gradient(160deg, #1f2230 0%, #282a36 46%, #232634 100%)",
+      bodyGlow1:
+        "radial-gradient(circle at top left, rgba(189, 147, 249, 0.18), transparent 34%)",
+      bodyGlow2:
+        "radial-gradient(circle at bottom right, rgba(139, 233, 253, 0.14), transparent 28%)",
+      selection: "rgba(255, 121, 198, 0.24)",
+      buttonTop: "#5d4b80",
+      buttonBottom: "#362d4f",
+      buttonBorder: "rgba(255, 184, 108, 0.38)",
+      buttonLedge: "rgba(16, 13, 24, 0.84)",
+      buttonText: "#f8f8f2",
+    },
+  ),
+  createTheme(
+    {
+      id: "catppuccin-mocha",
+      label: "Catppuccin Mocha",
+      shortLabel: "Catppuccin",
+      colorScheme: "dark",
+    },
+    DARK_BASE,
+    {
+      background: "#11111b",
+      backgroundStrong: "#1e1e2e",
+      panel: "rgba(30, 30, 46, 0.8)",
+      panelStrong: "rgba(30, 30, 46, 0.94)",
+      panelSolid: "#313244",
+      control: "rgba(49, 50, 68, 0.88)",
+      controlMuted: "rgba(49, 50, 68, 0.7)",
+      controlStrong: "#45475a",
+      controlPressed: "rgba(36, 38, 54, 0.98)",
+      input: "rgba(37, 38, 54, 0.92)",
+      border: "rgba(180, 190, 254, 0.18)",
+      borderStrong: "rgba(203, 166, 247, 0.34)",
+      text: "#cdd6f4",
+      textSoft: "#a6adc8",
+      textInverse: "#0f1020",
+      link: "#89b4fa",
+      accent: "#89b4fa",
+      accentSoft: "rgba(137, 180, 250, 0.18)",
+      accentGradientStart: "#94e2d5",
+      accentGradientEnd: "#89b4fa",
+      success: "#a6e3a1",
+      successContrast: "#15261b",
+      successSurface:
+        "linear-gradient(180deg, rgba(43, 69, 47, 0.94) 0%, rgba(62, 104, 67, 0.86) 100%)",
+      successSurfaceStrong: "rgba(33, 58, 39, 0.92)",
+      successLine: "#a6e3a1",
+      danger: "#f38ba8",
+      dangerSoft: "rgba(98, 43, 67, 0.92)",
+      bodyGradient: "linear-gradient(160deg, #11111b 0%, #181825 46%, #1e1e2e 100%)",
+      bodyGlow1:
+        "radial-gradient(circle at top left, rgba(137, 180, 250, 0.18), transparent 34%)",
+      bodyGlow2:
+        "radial-gradient(circle at bottom right, rgba(203, 166, 247, 0.14), transparent 28%)",
+      selection: "rgba(137, 180, 250, 0.24)",
+      buttonTop: "#59688c",
+      buttonBottom: "#2f3550",
+      buttonBorder: "rgba(180, 190, 254, 0.38)",
+      buttonText: "#eff3ff",
+    },
+  ),
+  createTheme(
+    {
+      id: "nord-frost",
+      label: "Nord Frost",
+      shortLabel: "Nord",
+      colorScheme: "dark",
+    },
+    DARK_BASE,
+    {
+      background: "#242933",
+      backgroundStrong: "#2e3440",
+      panel: "rgba(46, 52, 64, 0.78)",
+      panelStrong: "rgba(46, 52, 64, 0.94)",
+      panelSolid: "#3b4252",
+      control: "rgba(59, 66, 82, 0.88)",
+      controlMuted: "rgba(59, 66, 82, 0.72)",
+      controlStrong: "#434c5e",
+      controlPressed: "rgba(45, 52, 64, 0.98)",
+      input: "rgba(59, 66, 82, 0.9)",
+      border: "rgba(143, 188, 187, 0.18)",
+      borderStrong: "rgba(136, 192, 208, 0.34)",
+      text: "#eceff4",
+      textSoft: "#d8dee9",
+      textInverse: "#0d1720",
+      link: "#88c0d0",
+      accent: "#88c0d0",
+      accentSoft: "rgba(136, 192, 208, 0.18)",
+      accentGradientStart: "#8fbcbb",
+      accentGradientEnd: "#5e81ac",
+      success: "#a3be8c",
+      successContrast: "#172016",
+      successSurface:
+        "linear-gradient(180deg, rgba(53, 83, 56, 0.94) 0%, rgba(71, 110, 76, 0.84) 100%)",
+      successSurfaceStrong: "rgba(45, 71, 49, 0.92)",
+      successLine: "#a3be8c",
+      danger: "#bf616a",
+      dangerSoft: "rgba(86, 37, 42, 0.92)",
+      bodyGradient: "linear-gradient(160deg, #242933 0%, #2e3440 48%, #2a2f3b 100%)",
+      bodyGlow1:
+        "radial-gradient(circle at top left, rgba(136, 192, 208, 0.16), transparent 34%)",
+      bodyGlow2:
+        "radial-gradient(circle at bottom right, rgba(129, 161, 193, 0.14), transparent 28%)",
+      selection: "rgba(143, 188, 187, 0.24)",
+      buttonTop: "#5f728f",
+      buttonBottom: "#334257",
+      buttonBorder: "rgba(143, 188, 187, 0.36)",
+    },
+  ),
+  createTheme(
+    {
+      id: "rose-pine-moon",
+      label: "Rose Pine Moon",
+      shortLabel: "Rose Pine",
+      colorScheme: "dark",
+    },
+    DARK_BASE,
+    {
+      background: "#1b182b",
+      backgroundStrong: "#232136",
+      panel: "rgba(35, 33, 54, 0.8)",
+      panelStrong: "rgba(35, 33, 54, 0.94)",
+      panelSolid: "#2a273f",
+      control: "rgba(42, 39, 63, 0.88)",
+      controlMuted: "rgba(42, 39, 63, 0.72)",
+      controlStrong: "#393552",
+      controlPressed: "rgba(33, 30, 49, 0.98)",
+      input: "rgba(42, 39, 63, 0.9)",
+      border: "rgba(196, 167, 231, 0.18)",
+      borderStrong: "rgba(246, 193, 119, 0.34)",
+      text: "#e0def4",
+      textSoft: "#908caa",
+      textInverse: "#120f20",
+      link: "#9ccfd8",
+      accent: "#c4a7e7",
+      accentSoft: "rgba(196, 167, 231, 0.18)",
+      accentGradientStart: "#ea9a97",
+      accentGradientEnd: "#c4a7e7",
+      success: "#9ccfd8",
+      successContrast: "#112228",
+      successSurface:
+        "linear-gradient(180deg, rgba(32, 76, 84, 0.94) 0%, rgba(49, 110, 121, 0.84) 100%)",
+      successSurfaceStrong: "rgba(31, 63, 70, 0.92)",
+      successLine: "#9ccfd8",
+      danger: "#eb6f92",
+      dangerSoft: "rgba(100, 37, 62, 0.92)",
+      bodyGradient: "linear-gradient(160deg, #1b182b 0%, #232136 48%, #201d31 100%)",
+      bodyGlow1:
+        "radial-gradient(circle at top left, rgba(196, 167, 231, 0.18), transparent 34%)",
+      bodyGlow2:
+        "radial-gradient(circle at bottom right, rgba(234, 154, 151, 0.16), transparent 28%)",
+      selection: "rgba(196, 167, 231, 0.24)",
+      buttonTop: "#735d95",
+      buttonBottom: "#3b3053",
+      buttonBorder: "rgba(246, 193, 119, 0.34)",
+    },
+  ),
+  createTheme(
+    {
+      id: "gruvbox-ember",
+      label: "Gruvbox Ember",
+      shortLabel: "Gruvbox",
+      colorScheme: "dark",
+    },
+    DARK_BASE,
+    {
+      background: "#211d1b",
+      backgroundStrong: "#282828",
+      panel: "rgba(40, 40, 40, 0.8)",
+      panelStrong: "rgba(40, 40, 40, 0.94)",
+      panelSolid: "#3c3836",
+      control: "rgba(60, 56, 54, 0.88)",
+      controlMuted: "rgba(60, 56, 54, 0.72)",
+      controlStrong: "#504945",
+      controlPressed: "rgba(44, 41, 39, 0.98)",
+      input: "rgba(50, 48, 47, 0.9)",
+      border: "rgba(250, 189, 47, 0.18)",
+      borderStrong: "rgba(254, 128, 25, 0.34)",
+      text: "#ebdbb2",
+      textSoft: "#a89984",
+      textInverse: "#15120f",
+      link: "#83a598",
+      accent: "#fe8019",
+      accentSoft: "rgba(254, 128, 25, 0.18)",
+      accentGradientStart: "#fabd2f",
+      accentGradientEnd: "#fe8019",
+      success: "#b8bb26",
+      successContrast: "#1a1d0f",
+      successSurface:
+        "linear-gradient(180deg, rgba(64, 73, 23, 0.94) 0%, rgba(89, 107, 30, 0.84) 100%)",
+      successSurfaceStrong: "rgba(51, 60, 19, 0.92)",
+      successLine: "#b8bb26",
+      danger: "#fb4934",
+      dangerSoft: "rgba(101, 40, 28, 0.92)",
+      bodyGradient: "linear-gradient(160deg, #211d1b 0%, #282828 48%, #24211f 100%)",
+      bodyGlow1:
+        "radial-gradient(circle at top left, rgba(250, 189, 47, 0.15), transparent 34%)",
+      bodyGlow2:
+        "radial-gradient(circle at bottom right, rgba(131, 165, 152, 0.14), transparent 28%)",
+      selection: "rgba(250, 189, 47, 0.24)",
+      buttonTop: "#8a6134",
+      buttonBottom: "#4a3621",
+      buttonBorder: "rgba(254, 128, 25, 0.38)",
+      buttonText: "#fff5e0",
+    },
+  ),
+  createTheme(
+    {
+      id: "solarized-paper",
+      label: "Solarized Paper",
+      shortLabel: "Solarized",
+      colorScheme: "light",
+    },
+    LIGHT_BASE,
+    {
+      background: "#f6f1df",
+      backgroundStrong: "#fdf6e3",
+      panel: "rgba(253, 246, 227, 0.76)",
+      panelStrong: "rgba(253, 246, 227, 0.92)",
+      panelMuted: "rgba(255, 251, 239, 0.58)",
+      panelSolid: "#fffdf6",
+      control: "rgba(255, 251, 239, 0.82)",
+      controlMuted: "rgba(255, 249, 231, 0.72)",
+      controlStrong: "#fffdf6",
+      controlPressed: "rgba(248, 240, 215, 0.98)",
+      input: "rgba(255, 251, 239, 0.78)",
+      border: "rgba(88, 110, 117, 0.18)",
+      borderStrong: "rgba(38, 139, 210, 0.28)",
+      text: "#586e75",
+      textSoft: "#657b83",
+      textInverse: "#fdf6e3",
+      link: "#268bd2",
+      accent: "#268bd2",
+      accentSoft: "rgba(38, 139, 210, 0.14)",
+      accentGradientStart: "#2aa198",
+      accentGradientEnd: "#268bd2",
+      accentContrast: "#fdf6e3",
+      success: "#859900",
+      successContrast: "#273100",
+      successSurface:
+        "linear-gradient(180deg, rgba(235, 244, 202, 0.96) 0%, rgba(219, 235, 162, 0.92) 100%)",
+      successSurfaceStrong: "rgba(246, 249, 224, 0.86)",
+      successLine: "#859900",
+      danger: "#dc322f",
+      dangerSoft: "rgba(255, 223, 217, 0.92)",
+      shadow: "0 24px 60px rgba(130, 111, 60, 0.12)",
+      shadowSoft: "0 12px 24px rgba(130, 111, 60, 0.1)",
+      shadowStrong: "0 18px 38px rgba(130, 111, 60, 0.14)",
+      overlay: "rgba(67, 56, 24, 0.28)",
+      bodyGradient: "linear-gradient(160deg, #fdf6e3 0%, #f5ecd3 48%, #f7f0dc 100%)",
+      bodyGlow1:
+        "radial-gradient(circle at top left, rgba(255, 255, 255, 0.9), transparent 34%)",
+      bodyGlow2:
+        "radial-gradient(circle at bottom right, rgba(42, 161, 152, 0.14), transparent 28%)",
+      selection: "rgba(38, 139, 210, 0.18)",
+      buttonTop: "#fff9eb",
+      buttonBottom: "#e8e0bf",
+      buttonBorder: "rgba(38, 139, 210, 0.3)",
+      buttonLedge: "rgba(174, 160, 110, 0.46)",
+      buttonShadow: "rgba(120, 105, 58, 0.18)",
+      buttonHighlight: "rgba(255, 255, 255, 0.76)",
+      buttonText: "#586e75",
+    },
+  ),
+  createTheme(
+    {
+      id: "high-contrast-dark",
+      label: "High Contrast Dark",
+      shortLabel: "HC Dark",
+      colorScheme: "dark",
+    },
+    DARK_BASE,
+    {
+      background: "#000000",
+      backgroundStrong: "#0a0a0a",
+      panel: "rgba(9, 9, 9, 0.94)",
+      panelStrong: "rgba(12, 12, 12, 0.98)",
+      panelMuted: "rgba(18, 18, 18, 0.86)",
+      panelSolid: "#111111",
+      control: "rgba(20, 20, 20, 0.98)",
+      controlMuted: "rgba(18, 18, 18, 0.92)",
+      controlStrong: "#202020",
+      controlPressed: "#050505",
+      input: "#121212",
+      border: "rgba(255, 255, 255, 0.3)",
+      borderStrong: "#ffffff",
+      text: "#ffffff",
+      textSoft: "#d7d7d7",
+      textInverse: "#000000",
+      link: "#72d4ff",
+      accent: "#ffdb4d",
+      accentSoft: "rgba(255, 219, 77, 0.18)",
+      accentGradientStart: "#fff37e",
+      accentGradientEnd: "#ffdb4d",
+      accentContrast: "#050505",
+      success: "#5dff8a",
+      successContrast: "#031107",
+      successSurface:
+        "linear-gradient(180deg, rgba(0, 79, 31, 0.98) 0%, rgba(0, 109, 43, 0.94) 100%)",
+      successSurfaceStrong: "rgba(0, 68, 27, 0.98)",
+      successLine: "#5dff8a",
+      danger: "#ff6b6b",
+      dangerSoft: "rgba(78, 0, 0, 0.96)",
+      shadow: "0 24px 60px rgba(0, 0, 0, 0.66)",
+      shadowSoft: "0 12px 24px rgba(0, 0, 0, 0.5)",
+      shadowStrong: "0 18px 38px rgba(0, 0, 0, 0.56)",
+      overlay: "rgba(0, 0, 0, 0.78)",
+      bodyGradient: "linear-gradient(160deg, #000000 0%, #070707 100%)",
+      bodyGlow1:
+        "radial-gradient(circle at top left, rgba(255, 219, 77, 0.12), transparent 30%)",
+      bodyGlow2:
+        "radial-gradient(circle at bottom right, rgba(114, 212, 255, 0.12), transparent 24%)",
+      gridLine: "rgba(255, 255, 255, 0.1)",
+      gridLineSoft: "rgba(255, 255, 255, 0.06)",
+      selection: "rgba(255, 219, 77, 0.3)",
+      buttonTop: "#3d3d3d",
+      buttonBottom: "#161616",
+      buttonBorder: "#ffffff",
+      buttonLedge: "#000000",
+      buttonShadow: "rgba(0, 0, 0, 0.64)",
+      buttonHighlight: "rgba(255, 255, 255, 0.14)",
+      buttonText: "#ffffff",
+    },
+  ),
+  createTheme(
+    {
+      id: "high-contrast-light",
+      label: "High Contrast Light",
+      shortLabel: "HC Light",
+      colorScheme: "light",
+    },
+    LIGHT_BASE,
+    {
+      background: "#ffffff",
+      backgroundStrong: "#ffffff",
+      panel: "rgba(255, 255, 255, 0.96)",
+      panelStrong: "rgba(255, 255, 255, 0.99)",
+      panelMuted: "rgba(247, 247, 247, 0.92)",
+      panelSolid: "#ffffff",
+      control: "rgba(255, 255, 255, 0.98)",
+      controlMuted: "rgba(246, 246, 246, 0.94)",
+      controlStrong: "#ffffff",
+      controlPressed: "#efefef",
+      input: "#ffffff",
+      border: "rgba(0, 0, 0, 0.22)",
+      borderStrong: "#000000",
+      text: "#000000",
+      textSoft: "#272727",
+      textInverse: "#ffffff",
+      link: "#0038ff",
+      accent: "#0000ff",
+      accentSoft: "rgba(0, 0, 255, 0.1)",
+      accentGradientStart: "#4d4dff",
+      accentGradientEnd: "#0000ff",
+      accentContrast: "#ffffff",
+      success: "#008f2a",
+      successContrast: "#ffffff",
+      successSurface:
+        "linear-gradient(180deg, rgba(224, 255, 232, 0.98) 0%, rgba(197, 247, 209, 0.94) 100%)",
+      successSurfaceStrong: "rgba(245, 255, 248, 0.92)",
+      successLine: "#008f2a",
+      danger: "#b30000",
+      dangerSoft: "rgba(255, 223, 223, 0.96)",
+      shadow: "0 24px 60px rgba(0, 0, 0, 0.1)",
+      shadowSoft: "0 12px 24px rgba(0, 0, 0, 0.08)",
+      shadowStrong: "0 18px 38px rgba(0, 0, 0, 0.12)",
+      overlay: "rgba(0, 0, 0, 0.38)",
+      bodyGradient: "linear-gradient(160deg, #ffffff 0%, #fbfbfb 100%)",
+      bodyGlow1:
+        "radial-gradient(circle at top left, rgba(255, 255, 255, 0.94), transparent 24%)",
+      bodyGlow2:
+        "radial-gradient(circle at bottom right, rgba(0, 56, 255, 0.08), transparent 22%)",
+      gridLine: "rgba(0, 0, 0, 0.08)",
+      gridLineSoft: "rgba(0, 0, 0, 0.04)",
+      selection: "rgba(0, 0, 255, 0.18)",
+      buttonTop: "#ffffff",
+      buttonBottom: "#dfdfdf",
+      buttonBorder: "#000000",
+      buttonLedge: "rgba(0, 0, 0, 0.34)",
+      buttonShadow: "rgba(0, 0, 0, 0.16)",
+      buttonHighlight: "rgba(255, 255, 255, 0.98)",
+      buttonText: "#000000",
+    },
+  ),
+  createTheme(
+    {
+      id: "synthwave-soda",
+      label: "Synthwave Soda",
+      shortLabel: "Synthwave",
+      colorScheme: "dark",
+    },
+    DARK_BASE,
+    {
+      background: "#150a28",
+      backgroundStrong: "#1c0f35",
+      panel: "rgba(31, 17, 59, 0.8)",
+      panelStrong: "rgba(31, 17, 59, 0.94)",
+      panelSolid: "#28164b",
+      control: "rgba(43, 24, 81, 0.88)",
+      controlMuted: "rgba(43, 24, 81, 0.72)",
+      controlStrong: "#4b2a88",
+      controlPressed: "rgba(34, 19, 63, 0.98)",
+      input: "rgba(43, 24, 81, 0.9)",
+      border: "rgba(255, 102, 196, 0.22)",
+      borderStrong: "rgba(72, 235, 255, 0.34)",
+      text: "#ffeefe",
+      textSoft: "#cbb5ff",
+      textInverse: "#120418",
+      link: "#48ebff",
+      accent: "#ff66c4",
+      accentSoft: "rgba(255, 102, 196, 0.2)",
+      accentGradientStart: "#ffd166",
+      accentGradientEnd: "#ff66c4",
+      success: "#7dffb6",
+      successContrast: "#04130c",
+      successSurface:
+        "linear-gradient(180deg, rgba(16, 94, 70, 0.94) 0%, rgba(35, 143, 104, 0.84) 100%)",
+      successSurfaceStrong: "rgba(19, 74, 58, 0.92)",
+      successLine: "#7dffb6",
+      danger: "#ff6b8f",
+      dangerSoft: "rgba(96, 18, 45, 0.92)",
+      bodyGradient: "linear-gradient(160deg, #150a28 0%, #1c0f35 48%, #2a0f4b 100%)",
+      bodyGlow1:
+        "radial-gradient(circle at top left, rgba(255, 102, 196, 0.2), transparent 32%)",
+      bodyGlow2:
+        "radial-gradient(circle at bottom right, rgba(72, 235, 255, 0.18), transparent 26%)",
+      selection: "rgba(255, 102, 196, 0.26)",
+      buttonTop: "#ff8bd5",
+      buttonBottom: "#7c2cc9",
+      buttonBorder: "rgba(72, 235, 255, 0.42)",
+      buttonLedge: "rgba(33, 4, 57, 0.82)",
+      buttonText: "#14061f",
+    },
+  ),
+  createTheme(
+    {
+      id: "gameboy-garden",
+      label: "Game Boy Garden",
+      shortLabel: "Game Boy",
+      colorScheme: "light",
+    },
+    LIGHT_BASE,
+    {
+      background: "#d7e894",
+      backgroundStrong: "#e7f2b3",
+      panel: "rgba(236, 247, 176, 0.76)",
+      panelStrong: "rgba(242, 250, 196, 0.92)",
+      panelMuted: "rgba(228, 240, 162, 0.64)",
+      panelSolid: "#f2fac4",
+      control: "rgba(244, 251, 210, 0.84)",
+      controlMuted: "rgba(231, 242, 179, 0.72)",
+      controlStrong: "#f7fcd4",
+      controlPressed: "rgba(223, 236, 155, 0.98)",
+      input: "rgba(244, 251, 210, 0.8)",
+      border: "rgba(50, 67, 34, 0.18)",
+      borderStrong: "rgba(44, 58, 30, 0.28)",
+      text: "#24351b",
+      textSoft: "#486239",
+      textInverse: "#f3ffd8",
+      link: "#3c6031",
+      accent: "#54763f",
+      accentSoft: "rgba(84, 118, 63, 0.14)",
+      accentGradientStart: "#8daa4a",
+      accentGradientEnd: "#54763f",
+      accentContrast: "#f3ffd8",
+      success: "#2b7b2f",
+      successContrast: "#eefde8",
+      successSurface:
+        "linear-gradient(180deg, rgba(221, 246, 185, 0.96) 0%, rgba(188, 226, 136, 0.92) 100%)",
+      successSurfaceStrong: "rgba(243, 253, 227, 0.88)",
+      successLine: "#5f9d4a",
+      danger: "#7d4c1f",
+      dangerSoft: "rgba(255, 230, 190, 0.94)",
+      shadow: "0 24px 60px rgba(70, 94, 40, 0.16)",
+      shadowSoft: "0 12px 24px rgba(70, 94, 40, 0.12)",
+      shadowStrong: "0 18px 38px rgba(70, 94, 40, 0.18)",
+      overlay: "rgba(41, 57, 25, 0.34)",
+      bodyGradient: "linear-gradient(160deg, #d7e894 0%, #cfe18b 48%, #dceea1 100%)",
+      bodyGlow1:
+        "radial-gradient(circle at top left, rgba(244, 251, 210, 0.88), transparent 34%)",
+      bodyGlow2:
+        "radial-gradient(circle at bottom right, rgba(112, 157, 83, 0.16), transparent 26%)",
+      gridLine: "rgba(244, 251, 210, 0.08)",
+      gridLineSoft: "rgba(244, 251, 210, 0.05)",
+      selection: "rgba(84, 118, 63, 0.2)",
+      buttonTop: "#f7fcd4",
+      buttonBottom: "#b7cd6f",
+      buttonBorder: "rgba(68, 94, 51, 0.32)",
+      buttonLedge: "rgba(72, 96, 41, 0.44)",
+      buttonShadow: "rgba(70, 94, 40, 0.2)",
+      buttonText: "#24351b",
+    },
+  ),
+  createTheme(
+    {
+      id: "banana-split",
+      label: "Banana Split",
+      shortLabel: "Banana",
+      colorScheme: "light",
+    },
+    LIGHT_BASE,
+    {
+      background: "#fff4a9",
+      backgroundStrong: "#fff9cf",
+      panel: "rgba(255, 250, 214, 0.76)",
+      panelStrong: "rgba(255, 252, 226, 0.94)",
+      panelMuted: "rgba(255, 244, 189, 0.62)",
+      panelSolid: "#fffcee",
+      control: "rgba(255, 252, 226, 0.84)",
+      controlMuted: "rgba(255, 246, 194, 0.74)",
+      controlStrong: "#fffef4",
+      controlPressed: "rgba(255, 240, 168, 0.98)",
+      input: "rgba(255, 251, 219, 0.82)",
+      border: "rgba(130, 88, 39, 0.18)",
+      borderStrong: "rgba(255, 106, 136, 0.26)",
+      text: "#4b311c",
+      textSoft: "#87623f",
+      textInverse: "#fff9f2",
+      link: "#c95789",
+      accent: "#ff6a88",
+      accentSoft: "rgba(255, 106, 136, 0.16)",
+      accentGradientStart: "#ffcf5f",
+      accentGradientEnd: "#ff6a88",
+      accentContrast: "#fff7fb",
+      success: "#34a670",
+      successContrast: "#082115",
+      successSurface:
+        "linear-gradient(180deg, rgba(224, 255, 223, 0.96) 0%, rgba(182, 243, 189, 0.92) 100%)",
+      successSurfaceStrong: "rgba(244, 255, 240, 0.88)",
+      successLine: "#58cf8a",
+      danger: "#d25c36",
+      dangerSoft: "rgba(255, 223, 202, 0.94)",
+      shadow: "0 24px 60px rgba(150, 116, 39, 0.16)",
+      shadowSoft: "0 12px 24px rgba(150, 116, 39, 0.12)",
+      shadowStrong: "0 18px 38px rgba(150, 116, 39, 0.18)",
+      overlay: "rgba(92, 59, 13, 0.32)",
+      bodyGradient: "linear-gradient(160deg, #fff4a9 0%, #ffe886 44%, #ffd2d8 100%)",
+      bodyGlow1:
+        "radial-gradient(circle at top left, rgba(255, 255, 240, 0.94), transparent 34%)",
+      bodyGlow2:
+        "radial-gradient(circle at bottom right, rgba(255, 106, 136, 0.16), transparent 26%)",
+      selection: "rgba(255, 106, 136, 0.2)",
+      buttonTop: "#fff7d4",
+      buttonBottom: "#ffb173",
+      buttonBorder: "rgba(255, 106, 136, 0.32)",
+      buttonLedge: "rgba(184, 103, 42, 0.46)",
+      buttonShadow: "rgba(150, 116, 39, 0.2)",
+      buttonText: "#4b311c",
+    },
+  ),
+];
+
+export const DEFAULT_THEME_ID = "apple-glass-day";
+
+export function getThemeById(themeId: string | null | undefined): AppTheme {
+  return APP_THEMES.find((theme) => theme.id === themeId) ?? APP_THEMES[0];
+}
+
+export function getNextThemeId(currentThemeId: string): string {
+  const currentIndex = APP_THEMES.findIndex((theme) => theme.id === currentThemeId);
+
+  if (currentIndex === -1) {
+    return APP_THEMES[0].id;
+  }
+
+  return APP_THEMES[(currentIndex + 1) % APP_THEMES.length].id;
+}
